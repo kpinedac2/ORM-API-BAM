@@ -10,22 +10,22 @@ const sequelize = new Sequelize(
     }
 );
 
-const db = {};
+const baseDatos = {};
 sequelize.options.logging = false;
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+baseDatos.Sequelize = Sequelize;
+baseDatos.sequelize = sequelize;
 
-db.sequelize.sync({ force: true }).then(() => {
-    console.log("Generado exitosamente");
+baseDatos.sequelize.sync({ force: true }).then(() => {
+    console.log("Creacion de Entidades Automatizada");
 }).catch(error => {
     console.log(error.message);
 });
 
 /**Modelos de la parte administrativa**/
 /**Obteniendo el modelo de usuarios y empresas */
-db.Usuario = require("../models/Administracion/usuario.model")(sequelize, Sequelize);
-db.Empresa = require("../models/Administracion/empresa.model")(sequelize, Sequelize);
+baseDatos.Usuario = require("../models/Administracion/usuario.model")(sequelize, Sequelize);
+baseDatos.Empresa = require("../models/Administracion/empresa.model")(sequelize, Sequelize);
 
 
-module.exports = db;
+module.exports = baseDatos;
 

@@ -3,6 +3,6 @@ var express = require("express"),
 var swaggerUi = require("swagger-ui-express");
 
 /** Module **/
-
-
+const usuario = require("./Administracion/usuario.route");
+router.use('/usuarios', usuario);
 module.exports = router;
