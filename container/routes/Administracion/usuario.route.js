@@ -1,17 +1,10 @@
 const express = require('express');
-const checkAuth = require('../../midleware/checkout');
+const ChequeoAutenticacion = require('../../midleware/checkout');
 const router = express.Router();
-const {
-    getById,
-    eliminarUsuario,
-    updated,
-    getAll,
-    create,
-    Login
-} = require('../../controllers/Administracion/usuario.controller');
+const { getById, eliminarUsuario, updated,
+    getAll, create, Login } = require('../../controllers/Administracion/usuario.controller');
 
-
-router.use(checkAuth);
+router.use(ChequeoAutenticacion);
 router.post('/auth', Login);
 router
     .route('/:Id')
