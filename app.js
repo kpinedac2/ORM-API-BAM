@@ -23,17 +23,6 @@ app.use(bodyParser.json());
  */
 app.use(favicon(path.join(__dirname, 'assets/images', 'BAM.ico')))
 
-/*var whitelist = ['localhost:4200']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions));*/
 var routes = require('./container/routes/index');
 app.use('/', routes);
 
