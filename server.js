@@ -4,5 +4,5 @@ const port = process.env.PORT || 3100;
 const server = http.createServer(app);
 server.listen(port,
     console.log(
-        `Server corriendo en modo ${process.env.NODE_ENV} y puerto ${port}`.yellow.bold
+        `Servicio en Ejecucion ${process.env.NODE_ENV} PORT ${port}`.yellow.bold
     ));

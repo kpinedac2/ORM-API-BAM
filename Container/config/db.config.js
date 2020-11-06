@@ -21,7 +21,10 @@ db.sequelize.sync({ force: true }).then(() => {
     console.log(error.message);
 });
 
-/**Models**/
+/**Modelos de la parte administrativa**/
+/**Obteniendo el modelo de usuarios y empresas */
+db.Usuario = require("../models/Administracion/usuario.model")(sequelize, Sequelize);
+db.Empresa = require("../models/Administracion/empresa.model")(sequelize, Sequelize);
 
 
 module.exports = db;
