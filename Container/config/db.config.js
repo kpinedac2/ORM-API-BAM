@@ -27,5 +27,23 @@ baseDatos.Usuario = require("../models/Administracion/usuario.model")(sequelize,
 baseDatos.Empresa = require("../models/Administracion/empresa.model")(sequelize, Sequelize);
 
 
+/**Modelos de la parte personal */
+baseDatos.Persona = require("../models/Personal/persona.model")(sequelize, Sequelize);
+
+/**Relaciones de persona  */
+baseDatos.Persona.hasOne(baseDatos.Usuario, {
+    foreignKey: { allowNull: false },
+    onDelete: "RESTRICT",
+});
+
+baseDatos.Persona.hasMany(baseDatos.Empresa, {
+    foreignKey: { allowNull: true },
+    onDelete: "RESTRICT",
+});
+
+baseDatos.Empresa.belongsTo(baseDatos.Persona);
+
+
+
 module.exports = baseDatos;
 
