@@ -1,21 +1,8 @@
 const baseDatos = require("../../config/baseDatos.config");
-const Persona = baseDatos.Persona;
-
-exports.create = (req, res) => {
-    console.log(req.body)
-    Persona.create(req.body)
-        .then((Response) => {
-            res.status(200).json(Response);
-        })
-        .catch((err) => {
-            res.status(500).json(err);
-        });
-};
-
-
+const Cotizacion = baseDatos.Cotizacion;
 
 exports.getAll = (req, res) => {
-    Persona.findAndCountAll({
+    Cotizacion.findAndCountAll({
         order: [["createdAt", "DESC"]],
     })
         .then((response) => {
@@ -26,9 +13,8 @@ exports.getAll = (req, res) => {
         });
 };
 
-
 exports.getById = (req, res) => {
-    Persona.findByPk(req.params.Id)
+    Cotizacion.finbaseDatosyPk(req.params.Id)
         .then((response) => {
             res.status(200).json(response);
         })
@@ -37,9 +23,18 @@ exports.getById = (req, res) => {
         });
 };
 
+exports.create = (req, res) => {
+    Cotizacion.create(req.body)
+        .then((Response) => {
+            res.status(200).json(Response);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+        });
+};
 
-exports.actualizarPersona = (req, res) => {
-    Persona.update(req.body, { where: { id: req.params.Id } })
+exports.actualizarCotizacion = (req, res) => {
+    Cotizacion.update(req.body, { where: { id: req.params.Id } })
         .then((response) => {
             res.status(200).json(response);
         })
@@ -48,9 +43,9 @@ exports.actualizarPersona = (req, res) => {
         });
 };
 
-exports.eliminarPersona = (req, res) => {
+exports.eliminarCotizacion = (req, res) => {
     const id = req.params.Id;
-    Persona.destroy({
+    Cotizacion.destroy({
         where: { id: id },
     })
         .then((response) => {

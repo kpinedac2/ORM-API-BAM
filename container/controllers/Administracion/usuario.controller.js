@@ -1,4 +1,4 @@
-const baseDatos = require("../../config/db.config");
+const baseDatos = require("../../config/baseDatos.config");
 const usuario = baseDatos.usuario;
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");

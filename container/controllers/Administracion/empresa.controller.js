@@ -1,4 +1,4 @@
-const baseDatos = require("../../config/db.config");
+const baseDatos = require("../../config/baseDatos.config");
 const Empresa = baseDatos.Empresa;
 
 exports.getAll = (req, res) => {

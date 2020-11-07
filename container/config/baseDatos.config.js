@@ -1,5 +1,6 @@
 
 const Sequelize = require("sequelize");
+/**configuracion de la conexion a la base de datos */
 const sequelize = new Sequelize(
     process.env.database,
     process.env.user,
@@ -15,6 +16,7 @@ sequelize.options.logging = false;
 baseDatos.Sequelize = Sequelize;
 baseDatos.sequelize = sequelize;
 
+/**Generacion de las entidades */
 baseDatos.sequelize.sync({ force: true }).then(() => {
     console.log("Creacion de Entidades Automatizada");
 }).catch(error => {
@@ -30,6 +32,11 @@ baseDatos.Empresa = require("../models/Administracion/empresa.model")(sequelize,
 /**Modelos de la parte personal */
 baseDatos.Persona = require("../models/Personal/persona.model")(sequelize, Sequelize);
 
+
+/**Modelos de catalogos */
+baseDatos.Cotizacion = require("../models/Catalogos/cotizacion.model")(sequelize, Sequelize);
+
+
 /**Relaciones de persona  */
 baseDatos.Persona.hasOne(baseDatos.Usuario, {
     foreignKey: { allowNull: false },
@@ -41,12 +48,28 @@ baseDatos.Persona.hasMany(baseDatos.Empresa, {
     onDelete: "RESTRICT",
 });
 
+baseDatos.Persona.hasMany(baseDatos.Cotizacion, {
+    foreignKey: { name: "ClienteId", allowNull: true },
+    onDelete: "RESTRICT",
+});
+
+
+
 
 /**Relacion Empresa */
 baseDatos.Empresa.belongsTo(baseDatos.Persona);
+baseDatos.Empresa.hasMany(baseDatos.Cotizacion, {
+    foreignKey: { allowNull: true },
+    onDelete: "RESTRICT",
+});
 
+/**Relacion de catalogos */
+baseDatos.Cotizacion.belongsTo(baseDatos.Empresa);
 
-
+baseDatos.Cotizacion.belongsTo(baseDatos.Persona, {
+    as: "Cliente",
+    foreignKey: { name: "ClienteId", allowNull: true },
+});
 
 
 
