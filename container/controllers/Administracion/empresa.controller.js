@@ -1,21 +1,8 @@
 const baseDatos = require("../../config/db.config");
-const Persona = baseDatos.Persona;
-
-exports.create = (req, res) => {
-    console.log(req.body)
-    Persona.create(req.body)
-        .then((Response) => {
-            res.status(200).json(Response);
-        })
-        .catch((err) => {
-            res.status(500).json(err);
-        });
-};
-
-
+const Empresa = baseDatos.Empresa;
 
 exports.getAll = (req, res) => {
-    Persona.findAndCountAll({
+    Empresa.findAndCountAll({
         order: [["createdAt", "DESC"]],
     })
         .then((response) => {
@@ -28,7 +15,7 @@ exports.getAll = (req, res) => {
 
 
 exports.getById = (req, res) => {
-    Persona.findByPk(req.params.Id)
+    Empresa.finbaseDatosyPk(req.params.Id)
         .then((response) => {
             res.status(200).json(response);
         })
@@ -38,8 +25,19 @@ exports.getById = (req, res) => {
 };
 
 
-exports.actualizarPersona = (req, res) => {
-    Persona.update(req.body, { where: { id: req.params.Id } })
+exports.create = (req, res) => {
+    Empresa.create(req.body)
+        .then((Response) => {
+            res.status(200).json(Response);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+        });
+};
+
+
+exports.actualizarEmpresa = (req, res) => {
+    Empresa.update(req.body, { where: { id: req.params.Id } })
         .then((response) => {
             res.status(200).json(response);
         })
@@ -48,9 +46,9 @@ exports.actualizarPersona = (req, res) => {
         });
 };
 
-exports.eliminarPersona = (req, res) => {
+exports.eliminarEmpresa = (req, res) => {
     const id = req.params.Id;
-    Persona.destroy({
+    Empresa.destroy({
         where: { id: id },
     })
         .then((response) => {

@@ -41,7 +41,12 @@ baseDatos.Persona.hasMany(baseDatos.Empresa, {
     onDelete: "RESTRICT",
 });
 
+
+/**Relacion Empresa */
 baseDatos.Empresa.belongsTo(baseDatos.Persona);
+
+
+
 
 
 
