@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, Sequelize) => {
-    const Admin_Empresa = sequelize.define('Admin_Empresa', {
+    const Admin_Empresas = sequelize.define('Admin_Empresas', {
         id: {
             type: Sequelize.UUID,
             primaryKey: true,
@@ -38,5 +38,5 @@ module.exports = (sequelize, Sequelize) => {
 
     }
     );
-    return Admin_Empresa;
+    return Admin_Empresas;
 };
