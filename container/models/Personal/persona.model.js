@@ -1,27 +1,39 @@
 
 module.exports = (sequelize, Sequelize) => {
-    const Admin_Empresa = sequelize.define('Admin_Empresa', {
+    const PS_Persona = sequelize.define("PS_Persona", {
         id: {
             type: Sequelize.UUID,
             primaryKey: true,
             defaultValue: Sequelize.UUIDV4,
             allowNull: false
         },
-        Nombre: {
+        PrimerNombre: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        SegundoNombre: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        PrimerApellido: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        SegundoApellido: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        DPI: {
             type: Sequelize.STRING
         },
-        Direccion: {
-            type: Sequelize.STRING
+        Nacimiento: {
+            type: Sequelize.DATE
         },
-        DescripcionSocial: {
-            type: Sequelize.STRING
-        },
-        TipoEmpresa: {
+        TipoPersona: {
             type: Sequelize.ENUM,
             values: [
-                'Instiucion',
                 'Cliente',
-                'Organizacion'
+                'Gerente',
             ],
             defaultValue: 'Cliente',
             allowNull: false
@@ -34,9 +46,7 @@ module.exports = (sequelize, Sequelize) => {
             ],
             defaultValue: 'Activo',
             allowNull: false
-        }
-
-    }
-    );
-    return Admin_Empresa;
+        },
+    });
+    return PS_Persona;
 };

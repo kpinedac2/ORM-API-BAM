@@ -12,7 +12,7 @@ exports.Login = (req, res, next) => {
                 bcryptjs.compare(req.body.Password, user.Password, (err, result) => {
                     if (err) {
                         return res.status(401).json({
-                            message: "Auth failed",
+                            message: "Autenticacion fallida",
                         });
                     }
                     if (result) {
@@ -26,16 +26,16 @@ exports.Login = (req, res, next) => {
                         );
 
                         return res.status(200).json({
-                            message: "Auth successful",
+                            message: "Autenticacion Exitosa!",
                             token: token,
                         });
                     }
                     res.status(401).json({
-                        message: "Auth failed",
+                        message: "Autenticacion fallida",
                     });
                 });
             } else {
-                res.status(404).json({ message: "Auth failed" });
+                res.status(404).json({ message: "Autenticacion fallida", });
             }
         })
         .catch((err) => {
