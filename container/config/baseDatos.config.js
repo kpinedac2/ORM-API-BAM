@@ -35,6 +35,7 @@ baseDatos.Persona = require("../models/Personal/persona.model")(sequelize, Seque
 
 /**Modelos de catalogos */
 baseDatos.Cotizacion = require("../models/Catalogos/cotizacion.model")(sequelize, Sequelize);
+baseDatos.Departamento = require("../models/Catalogos/departamento.model")(sequelize, Sequelize);
 
 
 /**Relaciones de persona  */
