@@ -63,9 +63,6 @@ baseDatos.Persona.hasMany(baseDatos.Cotizacion, {
     onDelete: "RESTRICT",
 });
 
-
-
-
 /**Relacion Empresa */
 baseDatos.Empresa.belongsTo(baseDatos.Persona);
 baseDatos.Empresa.hasMany(baseDatos.Cotizacion, {
