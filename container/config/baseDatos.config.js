@@ -34,14 +34,19 @@ baseDatos.Persona = require("../models/Personal/persona.model")(sequelize, Seque
 
 
 /**Modelos de catalogos */
-baseDatos.Cotizacion = require("../models/Catalogos/cotizacion.model")(sequelize, Sequelize);
 baseDatos.Departamento = require("../models/Catalogos/departamento.model")(sequelize, Sequelize);
-baseDatos.Municipio = require("../models/Catalogos/municipio.model")(sequelize, sequelize);
+baseDatos.Municipio = require("../models/Catalogos/municipio.model")(sequelize, Sequelize);
+baseDatos.Cotizacion = require("../models/Catalogos/cotizacion.model")(sequelize, Sequelize);
 baseDatos.Contacto = require("../models/Catalogos/contacto.model")(sequelize, Sequelize);
-baseDatos.Vehiculo = require("../models/Catalogos/vehiculo.model")(sequelize, sequelize);
+baseDatos.Vehiculo = require("../models/Catalogos/vehiculo.model")(sequelize, Sequelize);
 
 
-/**Relaciones de persona  */
+baseDatos.Departamento.hasMany(baseDatos.Municipio, {
+    foreignKey: { allowNull: false },
+    onDelete: "RESTRICT",
+});
+baseDatos.Municipio.belongsTo(baseDatos.Departamento);
+
 baseDatos.Persona.hasOne(baseDatos.Usuario, {
     foreignKey: { allowNull: false },
     onDelete: "RESTRICT",
@@ -51,6 +56,7 @@ baseDatos.Persona.hasMany(baseDatos.Empresa, {
     foreignKey: { allowNull: true },
     onDelete: "RESTRICT",
 });
+baseDatos.Empresa.belongsTo(baseDatos.Persona);
 
 baseDatos.Persona.hasMany(baseDatos.Contacto, {
     foreignKey: { allowNull: true },
@@ -58,42 +64,44 @@ baseDatos.Persona.hasMany(baseDatos.Contacto, {
 });
 baseDatos.Contacto.belongsTo(baseDatos.Persona);
 
-baseDatos.Persona.hasMany(baseDatos.Cotizacion, {
-    foreignKey: { name: "ClienteId", allowNull: true },
-    onDelete: "RESTRICT",
-});
-
-/**Relacion Empresa */
-baseDatos.Empresa.belongsTo(baseDatos.Persona);
-baseDatos.Empresa.hasMany(baseDatos.Cotizacion, {
-    foreignKey: { allowNull: true },
-    onDelete: "RESTRICT",
-});
-
 baseDatos.Empresa.hasMany(baseDatos.Vehiculo, {
     foreignKey: { allowNull: true },
     onDelete: "RESTRICT",
 });
 baseDatos.Vehiculo.belongsTo(baseDatos.Empresa);
 
-/**Relacion de catalogos */
-baseDatos.Cotizacion.belongsTo(baseDatos.Empresa);
-
-baseDatos.Cotizacion.belongsTo(baseDatos.Persona, {
-    as: "Cliente",
-    foreignKey: { name: "ClienteId", allowNull: true },
+baseDatos.Empresa.hasMany(baseDatos.Cotizacion, {
+    foreignKey: { allowNull: true },
+    onDelete: "RESTRICT",
 });
+baseDatos.Cotizacion.belongsTo(baseDatos.Empresa);
 
 baseDatos.Vehiculo.hasMany(baseDatos.Cotizacion, {
     foreignKey: { allowNull: true },
     onDelete: "RESTRICT",
 });
 baseDatos.Cotizacion.belongsTo(baseDatos.Vehiculo);
-baseDatos.Departamento.hasMany(baseDatos.Municipio, {
-    foreignKey: { allowNull: false },
+
+baseDatos.Persona.hasMany(baseDatos.Cotizacion, {
+    foreignKey: { name: "CAClienteId", allowNull: true },
     onDelete: "RESTRICT",
 });
-baseDatos.Municipio.belongsTo(baseDatos.Departamento);
+
+baseDatos.Cotizacion.belongsTo(baseDatos.Persona, {
+    as: "Cliente",
+    foreignKey: { name: "CAClienteId", allowNull: true },
+});
+
+baseDatos.Persona.hasMany(baseDatos.Cotizacion, {
+    foreignKey: { name: "CAAgenteId", allowNull: true },
+    onDelete: "RESTRICT",
+});
+
+baseDatos.Cotizacion.belongsTo(baseDatos.Persona, {
+    as: "Agente",
+    foreignKey: { name: "CAAgenteId", allowNull: true },
+});
+
 
 
 
