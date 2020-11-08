@@ -37,6 +37,7 @@ baseDatos.Persona = require("../models/Personal/persona.model")(sequelize, Seque
 baseDatos.Cotizacion = require("../models/Catalogos/cotizacion.model")(sequelize, Sequelize);
 baseDatos.Departamento = require("../models/Catalogos/departamento.model")(sequelize, Sequelize);
 baseDatos.Municipio = require("../models/Catalogos/municipio.model")(sequelize, sequelize);
+baseDatos.Contacto = require("../models/Catalogos/contacto.model")(sequelize, Sequelize);
 
 
 /**Relaciones de persona  */
@@ -49,6 +50,12 @@ baseDatos.Persona.hasMany(baseDatos.Empresa, {
     foreignKey: { allowNull: true },
     onDelete: "RESTRICT",
 });
+
+baseDatos.Persona.hasMany(baseDatos.Contacto, {
+    foreignKey: { allowNull: true },
+    onDelete: "RESTRICT",
+});
+baseDatos.Contacto.belongsTo(baseDatos.Persona);
 
 baseDatos.Persona.hasMany(baseDatos.Cotizacion, {
     foreignKey: { name: "ClienteId", allowNull: true },
