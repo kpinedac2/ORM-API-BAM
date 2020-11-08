@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, Sequelize) => {
     const CA_Municipios = sequelize.define('CA_Municipios', {
         id: {

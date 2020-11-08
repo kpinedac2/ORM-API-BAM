@@ -1,7 +1,7 @@
 const baseDatos = require("../../config/baseDatos.config");
 const Departamento = baseDatos.Departamento;
 
-exports.findAll = (req, res) => {
+exports.getAll = (req, res) => {
     Departamento.findAndCountAll({
         order: [["createdAt", "DESC"]],
     })
@@ -45,7 +45,7 @@ exports.actualizarDepartamento = (req, res) => {
         });
 };
 
-exports.EliminarDepartamento = (req, res) => {
+exports.eliminarDepartamento = (req, res) => {
     const id = req.params.Id;
     Departamento.destroy({
         where: { id: id }
