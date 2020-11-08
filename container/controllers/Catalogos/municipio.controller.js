@@ -1,8 +1,8 @@
 const baseDatos = require("../../config/baseDatos.config");
-const Departamento = baseDatos.Departamento;
+const Municipio = baseDatos.Municipio;
 
-exports.findAll = (req, res) => {
-    Departamento.findAndCountAll({
+exports.getAll = (req, res) => {
+    Municipio.findAndCountAll({
         order: [["createdAt", "DESC"]],
     })
         .then((response) => {
@@ -14,7 +14,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.getById = (req, res) => {
-    Departamento.finbaseDatosyPk(req.params.Id)
+    Municipio.finbaseDatosyPk(req.params.Id)
         .then((response) => {
             res.status(200).json(response);
         })
@@ -23,9 +23,8 @@ exports.getById = (req, res) => {
         });
 };
 
-
 exports.create = (req, res) => {
-    Departamento.create(req.body)
+    Municipio.create(req.body)
         .then((Response) => {
             res.status(200).json(Response);
         })
@@ -34,9 +33,8 @@ exports.create = (req, res) => {
         });
 };
 
-
-exports.actualizarDepartamento = (req, res) => {
-    Departamento.update(req.body, { where: { id: req.params.Id } })
+exports.actualizarMunicipio = (req, res) => {
+    Municipio.update(req.body, { where: { id: req.params.Id } })
         .then((response) => {
             res.status(200).json(response);
         })
@@ -45,9 +43,9 @@ exports.actualizarDepartamento = (req, res) => {
         });
 };
 
-exports.EliminarDepartamento = (req, res) => {
+exports.eliminarMunicipio = (req, res) => {
     const id = req.params.Id;
-    Departamento.destroy({
+    Municipio.destroy({
         where: { id: id }
     })
         .then((response) => {
