@@ -25,6 +25,7 @@
     "nodemon": "^2.0.6",
     "sequelize": "^6.3.5",
     "serve-favicon": "^2.5.0",
+    "swagger-jsdoc": "^5.0.1",
     "swagger-ui-express": "^4.1.4"
   }
 }

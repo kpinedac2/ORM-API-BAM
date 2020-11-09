@@ -1,5 +1,5 @@
 const baseDatos = require("../../config/baseDatos.config");
-const usuario = baseDatos.usuario;
+const usuario = baseDatos.Usuario;
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 

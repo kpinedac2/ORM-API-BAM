@@ -17,11 +17,11 @@ baseDatos.Sequelize = Sequelize;
 baseDatos.sequelize = sequelize;
 
 /**Generacion de las entidades */
-baseDatos.sequelize.sync({ force: true }).then(() => {
-    console.log("Creacion de Entidades Automatizada");
-}).catch(error => {
-    console.log(error.message);
-});
+//baseDatos.sequelize.sync({ force: true }).then(() => {
+//    console.log("Creacion de Entidades Automatizada");
+//}).catch(error => {
+//    console.log(error.message);
+//});
 
 /**Modelos de la parte administrativa**/
 /**Obteniendo el modelo de usuarios y empresas */

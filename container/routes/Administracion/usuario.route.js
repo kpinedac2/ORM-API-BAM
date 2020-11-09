@@ -4,7 +4,7 @@ const router = express.Router();
 const { getById, eliminarUsuario, updated,
     getAll, create, Login } = require('../../controllers/Administracion/usuario.controller');
 
-router.use(ChequeoAutenticacion);
+//router.use(ChequeoAutenticacion);
 router.post('/auth', Login);
 router
     .route('/:Id')

@@ -1,0 +1,6 @@
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: authorization
+    in: header
+    template: "Bearer {apiKey}"
