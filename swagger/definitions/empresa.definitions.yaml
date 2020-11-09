@@ -16,3 +16,20 @@ definitions:
         enum: [Activo, Inactivo]
       PSPersonaId:
         type: "string"
+  empresaPutBody:
+    type: object
+    properties:
+      Nombre:
+        type: "string"
+      Direccion:
+        type: "string"
+      DescripcionSocial:
+        type: "string"
+      TipoEmpresa:
+        type: "string"
+        enum: [Institucion, Cliente, Organizacion]
+      Estado:
+        type: "string"
+        enum: [Activo, Inactivo]
+      PSPersonaId:
+        type: "string"

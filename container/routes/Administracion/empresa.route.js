@@ -55,6 +55,7 @@ router.route('/:Id').delete(eliminarEmpresa)
  *         - Bearer: []
  *     parameters:
  *       - $ref: "#/parameters/idPath"
+ *       - $ref: "#/parameters/empresaPutBody"
  *     responses:
  *       200:
  *         description: Ok

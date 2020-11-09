@@ -1,0 +1,34 @@
+definitions:
+  usuarioPostBody:
+    type: object
+    properties:
+      Correo:
+        type: "string" 
+      Usuario: 
+        type: "string"
+      Password: 
+        type: "string"
+      Estado: 
+        type: "string"
+        enum: [Activo, Inactivo]
+      PSPersonaId: 
+        type: "string"
+  usuarioPutBody:
+    type: object
+    properties:
+      Correo:
+        type: "string" 
+      Usuario: 
+        type: "string"
+      Password: 
+        type: "string"
+      Estado: 
+        type: "string"
+        enum: [Activo, Inactivo]
+      PSPersonaId: 
+        type: "string"
+
+
+
+
+

@@ -1,15 +1,16 @@
 parameters:
-  empresaPostBody:
+  usuarioPostBody:
     in: body
     name: body
     description: Ejemplo de creación de una Empresa
     required: true
     schema:
       $ref: "#/definitions/empresaPostBody"
-  empresaPutBody:
+  usuarioPutBody:
     in: body
     name: body
     description: Ejemplo de actualización de una Empresa
     required: true
     schema:
       $ref: "#/definitions/empresaPutBody"
+
