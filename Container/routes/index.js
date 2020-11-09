@@ -15,7 +15,7 @@ const persona = require("./Personal/persona.route");
 const cotizacion = require("./Catalogos/cotizacion.route");
 const departamento = require("./Catalogos/departamento.route");
 const municipio = require("./Catalogos/municipio.route");
-const contacto = require("./Catalogos/municipio.route");
+const contacto = require("./Catalogos/contacto.route");
 const vehiculo = require("./Catalogos/vehiculo.route");
 
 /**definiendo la ruta que nos brindara acceso al backend */

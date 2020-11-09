@@ -70,7 +70,7 @@ exports.getAll = (req, res) => {
 
 
 exports.getById = (req, res) => {
-    usuario.finbaseDatosyPk(req.params.Id)
+    usuario.findByPk(req.params.Id)
         .then((response) => {
             res.status(200).json(response);
         })

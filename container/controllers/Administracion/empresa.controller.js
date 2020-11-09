@@ -15,7 +15,7 @@ exports.getAll = (req, res) => {
 
 
 exports.getById = (req, res) => {
-    Empresa.finbaseDatosyPk(req.params.Id)
+    Empresa.findByPk(req.params.Id)
         .then((response) => {
             res.status(200).json(response);
         })
