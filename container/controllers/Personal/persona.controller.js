@@ -39,6 +39,7 @@ exports.getById = (req, res) => {
 
 
 exports.actualizarPersona = (req, res) => {
+    console.log(req.body)
     Persona.update(req.body, { where: { id: req.params.Id } })
         .then((response) => {
             res.status(200).json(response);
