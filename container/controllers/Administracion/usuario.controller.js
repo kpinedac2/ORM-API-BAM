@@ -1,24 +1,24 @@
 const baseDatos = require("../../config/baseDatos.config");
-const usuario = baseDatos.usuario;
+const usuario = baseDatos.Usuario;
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 exports.Login = (req, res, next) => {
     usuario.findOne({
-        where: { Email: req.body.Email },
+        where: { Correo: req.body.Correo },
     })
         .then((user) => {
             if (user) {
                 bcryptjs.compare(req.body.Password, user.Password, (err, result) => {
-                    if (err) {
+                    /* if (err) {
                         return res.status(401).json({
-                            message: "Autenticacion fallida",
+                            message: "Autenticacion fallida!",
                         });
-                    }
+                    } */
                     if (result) {
                         const token = jwt.sign(
                             {
-                                Email: user.Email,
+                                Correo: user.Correo,
                                 UserId: user.id,
                             },
                             process.env.JWT_KEY,

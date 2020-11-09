@@ -1,0 +1,8 @@
+parameters:
+  empresaPostBody:
+    in: body
+    name: body
+    description: Ejemplo de creación de una Empresa
+    required: true
+    schema:
+      $ref: "#/definitions/empresaPostBody"
