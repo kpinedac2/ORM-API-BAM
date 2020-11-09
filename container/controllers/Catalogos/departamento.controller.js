@@ -14,7 +14,7 @@ exports.getAll = (req, res) => {
 };
 
 exports.getById = (req, res) => {
-    Departamento.finbaseDatosyPk(req.params.Id)
+    Departamento.findByPk(req.params.Id)
         .then((response) => {
             res.status(200).json(response);
         })
